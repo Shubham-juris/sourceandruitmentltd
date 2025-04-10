@@ -1,14 +1,18 @@
 import React from 'react';
-
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/common/Navbar';
+import AppRoutes from './router/Routes';
+import Footer from './components/common/Footer';
+
 
 function App() {
   return (
-    <>
-      <h1 class='text-3xl font-bold underline text-center mt-14 py-20 bg-stone-600'>
-        Hello world!
-      </h1>
-    </>
+    <Router>
+      <Navbar />
+      <AppRoutes />
+      <Footer />
+    </Router>
   );
 }
 
