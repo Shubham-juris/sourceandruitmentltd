@@ -1,17 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // Mobile menu toggle
-  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false); // Desktop "MORE" dropdown toggle
-  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false); // Profile dropdown toggle
-  const [mobileMoreDropdownOpen, setMobileMoreDropdownOpen] = useState(false); // Mobile dropdown toggle
-  
+  const [isOpen, setIsOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [mobileMoreDropdownOpen, setMobileMoreDropdownOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const moreDropdownRef = useRef(null);
   const profileDropdownRef = useRef(null);
   const mobileDropdownRef = useRef(null);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (moreDropdownRef.current && !moreDropdownRef.current.contains(event.target)) {
@@ -24,72 +27,80 @@ export default function Navbar() {
         setMobileMoreDropdownOpen(false);
       }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [moreDropdownRef, profileDropdownRef, mobileDropdownRef]);
+  }, []);
 
-  // Function to close dropdowns after clicking an option
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY) {
+        setShowNavbar(true); // scroll up
+      } else if (currentScrollY > 100) {
+        setShowNavbar(false); // scroll down
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const handleOptionClick = () => {
     setMoreDropdownOpen(false);
     setProfileDropdownOpen(false);
     setMobileMoreDropdownOpen(false);
   };
 
+  const isActive = (path) =>
+    currentPath === path ? "text-orange-400" : "text-white";
+
   return (
-    <nav className="absolute top-0 left-0 w-full z-20 bg-black bg-opacity-80 shadow-lg">
+    <nav
+      className={`top-0 left-0 w-full z-50 transition-transform duration-300 ${
+        showNavbar ? "fixed" : "-translate-y-full"
+      } bg-black bg-opacity-80 shadow-lg`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <h1 className="text-white font-bold text-2xl">
+            <h1 className="text-white font-bold text-3xl">
               Sources and Recruitment
             </h1>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-4 items-center">
-            <Link
-              to="/"
-              className="text-white hover:text-gray-200 text-md font-medium"
-            >
+          <div className="hidden md:flex space-x-6 items-center">
+            <Link to="/" className={`${isActive("/")} hover:text-orange-400 text-lg font-medium`}>
               HOME
             </Link>
-            <Link
-              to="/about"
-              className="text-white hover:text-gray-200 text-md font-medium"
-            >
+            <Link to="/about" className={`${isActive("/about")} hover:text-orange-400 text-lg font-medium`}>
               ABOUT US
             </Link>
-            <Link
-              to="/job-seekers"
-              className="text-white hover:text-gray-200 text-md font-medium"
-            >
+            <Link to="/job-seekers" className={`${isActive("/job-seekers")} hover:text-orange-400 text-lg font-medium`}>
               JOB SEEKERS
             </Link>
-            <Link
-              to="/hire-talent"
-              className="text-white hover:text-gray-200 text-md font-medium"
-            >
+            <Link to="/hire-talent" className={`${isActive("/hire-talent")} hover:text-orange-400 text-lg font-medium`}>
               HIRE TALENT
             </Link>
-            <Link
-              to="/explore-jobs"
-              className="text-white hover:text-gray-200 text-md font-medium"
-            >
+            <Link to="/explore-jobs" className={`${isActive("/explore-jobs")} hover:text-orange-400 text-lg font-medium`}>
               EXPLORE JOBS
             </Link>
-            
-            {/* More Dropdown */}
+
             <div className="relative" ref={moreDropdownRef}>
-              <button 
-                className="text-white hover:text-gray-200 text-md font-medium flex items-center"
+              <button
+                className="text-white hover:text-orange-400 text-lg font-medium flex items-center"
                 onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
               >
                 MORE
                 <svg
-                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${moreDropdownOpen ? 'transform rotate-180' : ''}`}
+                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                    moreDropdownOpen ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -101,38 +112,35 @@ export default function Navbar() {
                   />
                 </svg>
               </button>
-              
-              {/* Desktop More Dropdown menu */}
               {moreDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-black bg-opacity-90 rounded-md shadow-lg py-1 z-30">
-                  <Link 
-                    to="/resources" 
-                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
-                    onClick={handleOptionClick}
-                  >
-                    Resources
-                  </Link>
-                  <Link 
-                    to="/blog" 
-                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
-                    onClick={handleOptionClick}
-                  >
-                    Blog
-                  </Link>
-                  <Link 
-                    to="/contact" 
-                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
+                  <Link
+                    to="/contact"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
                     onClick={handleOptionClick}
                   >
                     Contact Us
                   </Link>
+                  <Link
+                    to="/hot-jobs"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
+                    onClick={handleOptionClick}
+                  >
+                    Hot Jobs
+                  </Link>
+                  <Link
+                    to="/hiring"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
+                    onClick={handleOptionClick}
+                  >
+                    Hiring
+                  </Link>
                 </div>
               )}
             </div>
-            
-            {/* Profile Dropdown */}
+
             <div className="relative" ref={profileDropdownRef}>
-              <button 
+              <button
                 className="text-white p-1 rounded-full hover:bg-gray-800"
                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
               >
@@ -151,31 +159,28 @@ export default function Navbar() {
                   />
                 </svg>
               </button>
-              
-              {/* Profile Dropdown Menu */}
               {profileDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-black bg-opacity-90 rounded-md shadow-lg py-1 z-30">
-                  <Link 
-                    to="/signin" 
-                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
+                  <Link
+                    to="/signin"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
                     onClick={handleOptionClick}
                   >
-                    Sign IN 
+                    Sign In
                   </Link>
-                  <Link 
-                    to="/account-settings" 
-                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
+                  <Link
+                    to="/create-account"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
                     onClick={handleOptionClick}
                   >
-                    Account Settings
+                    Create Account
                   </Link>
-                  <div className="border-t border-gray-700 my-1"></div>
-                  <Link 
-                    to="/logout" 
-                    className="block px-4 py-2 text-sm text-red-400 hover:bg-gray-800"
+                  <Link
+                    to="/my-account"
+                    className="block px-4 py-2 text-sm text-white hover:text-orange-400 hover:bg-gray-800"
                     onClick={handleOptionClick}
                   >
-                    Logout
+                    My Account
                   </Link>
                 </div>
               )}
@@ -184,28 +189,6 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            {/* Mobile Profile Icon */}
-            <button 
-              onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-              className="text-white p-1 rounded-full mr-2"
-            >
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </button>
-            
-            {/* Mobile menu toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-white focus:outline-none"
@@ -236,60 +219,33 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Profile Dropdown for Mobile */}
-      {profileDropdownOpen && (
-        <div className="md:hidden absolute right-16 top-16 w-48 bg-black bg-opacity-90 rounded-md shadow-lg py-1 z-40">
-          <Link 
-            to="/profile" 
-            className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
-            onClick={handleOptionClick}
-          >
-            My Profile
-          </Link>
-          <Link 
-            to="/account-settings" 
-            className="block px-4 py-2 text-sm text-white hover:bg-gray-800"
-            onClick={handleOptionClick}
-          >
-            Account Settings
-          </Link>
-          <div className="border-t border-gray-700 my-1"></div>
-          <Link 
-            to="/logout" 
-            className="block px-4 py-2 text-sm text-red-400 hover:bg-gray-800"
-            onClick={handleOptionClick}
-          >
-            Logout
-          </Link>
-        </div>
-      )}
-
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-black bg-opacity-80 px-4 pb-4">
-          <Link to="/" className="block text-white py-2">
+          <Link to="/" className="block text-white py-2 hover:text-orange-400">
             HOME
           </Link>
-          <Link to="/about" className="block text-white py-2">
+          <Link to="/about" className="block text-white py-2 hover:text-orange-400">
             ABOUT US
           </Link>
-          <Link to="/job-seekers" className="block text-white py-2">
+          <Link to="/job-seekers" className="block text-white py-2 hover:text-orange-400">
             JOB SEEKERS
           </Link>
-          <Link to="/hire-talent" className="block text-white py-2">
+          <Link to="/hire-talent" className="block text-white py-2 hover:text-orange-400">
             HIRE TALENT
           </Link>
-          <Link to="/explore-jobs" className="block text-white py-2">
+          <Link to="/explore-jobs" className="block text-white py-2 hover:text-orange-400">
             EXPLORE JOBS
           </Link>
           <div className="block py-2" ref={mobileDropdownRef}>
-            <button 
+            <button
               onClick={() => setMobileMoreDropdownOpen(!mobileMoreDropdownOpen)}
-              className="flex items-center text-white w-full"
+              className="flex items-center text-white w-full hover:text-orange-400"
             >
               MORE
               <svg
-                className={`ml-1 h-4 w-4 transition-transform duration-200 ${mobileMoreDropdownOpen ? 'transform rotate-180' : ''}`}
+                className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                  mobileMoreDropdownOpen ? "rotate-180" : ""
+                }`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -302,31 +258,28 @@ export default function Navbar() {
               </svg>
             </button>
             {mobileMoreDropdownOpen && (
-              <div className="pl-4 mt-1">
-                <Link 
-                  to="/resources" 
-                  className="block text-white py-2"
-                  onClick={handleOptionClick}
-                >
-                  Resources
-                </Link>
-                <Link 
-                  to="/blog" 
-                  className="block text-white py-2"
-                  onClick={handleOptionClick}
-                >
-                  Blog
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className="block text-white py-2"
-                  onClick={handleOptionClick}
-                >
+              <div className="mt-2 bg-black bg-opacity-90 rounded-md shadow-lg py-1">
+                <Link to="/contact" className="block px-4 py-2 text-sm text-white hover:text-orange-400" onClick={handleOptionClick}>
                   Contact Us
+                </Link>
+                <Link to="/hot-jobs" className="block px-4 py-2 text-sm text-white hover:text-orange-400" onClick={handleOptionClick}>
+                  Hot Jobs
+                </Link>
+                <Link to="/hiring" className="block px-4 py-2 text-sm text-white hover:text-orange-400" onClick={handleOptionClick}>
+                  Hiring
                 </Link>
               </div>
             )}
           </div>
+          <Link to="/signin" className="block text-white py-2 hover:text-orange-400">
+            Sign In
+          </Link>
+          <Link to="/create-account" className="block text-white py-2 hover:text-orange-400">
+            Create Account
+          </Link>
+          <Link to="/my-account" className="block text-white py-2 hover:text-orange-400">
+            My Account
+          </Link>
         </div>
       )}
     </nav>

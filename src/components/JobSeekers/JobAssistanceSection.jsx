@@ -6,8 +6,8 @@ import Empowering from '../../assets/images/Empowering.jpg';
 
 export default function JobAssistanceSection() {
   return (
-    <div className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto text-center mb-12">
+    <div className="w-full bg-white py-20 px-8 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto text-center mb-10">
         <h2 className="text-5xl font-bold text-orange-500 mb-4">
           How We Assist You in Finding Employment
         </h2>

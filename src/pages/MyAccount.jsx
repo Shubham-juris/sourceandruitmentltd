@@ -1,11 +1,9 @@
-
 import SignIn from "../components/user/SignIn";
 
-export default function SignInPage() {
+export default function MyAccount() {
   return (
     <>
-           <SignIn />
-    
+      <SignIn />
     </>
   );
 }
