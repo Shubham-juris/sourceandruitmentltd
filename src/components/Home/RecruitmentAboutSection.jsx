@@ -16,7 +16,7 @@ export default function RecruitmentAboutSection() {
           </div>
           <div className="md:w-1/2 md:pl-12 text-center md:text-left"> 
             
-            <h2 className="text-4xl font-semibold text-orange-500 mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-orange-500 mb-6">
               Unlocking the potential of talent to fuel business success.
             </h2>
             

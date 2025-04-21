@@ -14,7 +14,7 @@ export default function EmployerRecruitmentSection() {
           </div>
           <div className="w-full md:w-1/2 md:pl-14 text-center md:text-left">
            
-            <h2 className="text-5xl font-bold text-orange-500 mb-10">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-10">
               Find your ideal candidate for your team
             </h2>
             

@@ -11,7 +11,7 @@ export default function SignIn() {
 
   return (
     <div className="max-w-3xl mx-auto mt-26 px-6 py-12">
-      <h1 className="text-6xl font-bold text-center text-orange-500 mb-10">
+      <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center text-orange-500 mb-10">
         Account Sign In
       </h1>
 

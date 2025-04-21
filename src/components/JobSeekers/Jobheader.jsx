@@ -2,9 +2,9 @@ import React from 'react';
 import JobsOpportunities from '../../assets/images/JobsOpportunities.jpg';``
 export default function Jobheader() {
   return (
-    <div className="w-full flex flex-col  justify-center mx-auto  max-w-7xl md:flex-row">
+    <div className="w-full flex flex-col  justify-center mx-auto pt-16  max-w-7xl md:flex-row">
       <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
-        <h1 className="text-5xl font-bold text-orange-500 mb-6">Jobs Opportunities</h1>
+        <h1 className="text-2xl  md:text-3xl lg:text-5xl font-bold text-orange-500 mb-6">Jobs Opportunities</h1>
         
         <div className="w-32 h-px bg-gray-300 mb-8"></div>
         

@@ -8,8 +8,8 @@ export default function Footer() {
           Copyright © 2024 Source and Recruitment - All Rights Reserved.
         </p>
         
-        <nav className="flex justify-center space-x-6">
-          <a href="/" className="hover:text-gray-300 transition-colors">
+        <nav className="flex flex-col md:flex-row  justify-center items-start space-x-6">
+          <a href="/" className=" hover:text-gray-300 transition-colors">
             HOME
           </a>
           <a href="/about" className="hover:text-gray-300 transition-colors">

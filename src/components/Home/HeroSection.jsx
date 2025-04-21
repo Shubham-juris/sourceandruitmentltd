@@ -15,7 +15,7 @@ export default function HeroSection() {
 
       <div className="relative flex items-center justify-center text-center min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          <h2 className="text-white text-4xl mt-16 sm:text-4xl md:text-6xl font-bold leading-tight">
             Empowering careers,<br />
             one placement at a<br />
             time.

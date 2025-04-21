@@ -4,7 +4,7 @@ export default function ContactUs() {
   
   return (
     <div className="w-full bg-gradient-to-b from-white to-gray-300 py-12 px-4 text-center">
-      <h1 className="text-5xl font-bold text-orange-500 mb-6">Contact Us</h1>
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-6">Contact Us</h1>
       
       <div className="w-16 h-px bg-gray-300 mx-auto mb-8"></div>
       

@@ -8,11 +8,11 @@ export default function HowWeWorkSection() {
     <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold text-orange-500 mb-6">How we work</h2>
+          <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-orange-500 mb-6">How we work</h2>
           <div className="w-16 h-1 bg-gray-300 mx-auto"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div className="flex flex-col items-center">
             <div className="rounded-full overflow-hidden w-64 h-64 mb-8">
               <img 

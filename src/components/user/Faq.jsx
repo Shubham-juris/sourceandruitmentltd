@@ -24,7 +24,7 @@ export default function Faq() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 mt-20 py-20">
-      <h2 className="text-5xl font-extrabold text-orange-500 text-center my-5">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-orange-500 text-center my-5">
         Frequently Asked Questions
       </h2>
       <p className="text-center text-2xl text-gray-600 py-12">

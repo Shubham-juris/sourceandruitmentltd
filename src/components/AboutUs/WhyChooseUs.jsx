@@ -14,16 +14,16 @@ export default function WhyChooseUs() {
           </div>
           
           <div className="text-center py-6">
-            <h1 className="text-5xl font-bold text-white">Why Choose Us</h1>
+            <h1 className="text-3xl lg:text-5xl font-bold text-white">Why Choose Us</h1>
             <div className="w-24 h-1 bg-white mx-auto mt-6 mb-8"></div>
           </div>
           
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="text-xl lg:text-2xl font-semibold mb-6">
               HR Services Tailored to Your Business
             </h2>
             
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg text-[1rem] lg:text-[2rem] leading-relaxed">
               With our personalized approach to recruitment and commitment to excellence, we're here to
               support you every step of the way in your job search or talent acquisition journey. We specialize
               in providing personalized HR solutions designed to meet the unique needs of your business. Our

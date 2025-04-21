@@ -15,7 +15,7 @@ export default function CareerHeroSection() {
           
           <div className="w-full md:w-1/2 md:pl-12 text-center md:text-left ">
             
-            <h1 className="text-5xl font-bold text-orange-500 mb-6 py-10">
+            <h1 className="text-3xl lg:text-5xl font-bold text-orange-500 mb-6 py-10">
               Your career journey starts here.
             </h1>
             <p className="text-gray-700 mb-8 text-3xl">
