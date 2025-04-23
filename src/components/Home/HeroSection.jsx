@@ -12,6 +12,7 @@ export default function HeroSection() {
           zIndex: -1,
         }}
       ></div>
+        <div className="absolute inset-0 bg-black/50" />
 
       <div className="relative flex items-center justify-center text-center min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
