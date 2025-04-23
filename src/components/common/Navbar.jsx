@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from '../../assets/images/logo.webp'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +51,14 @@ export default function Navbar() {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"} bg-black bg-opacity-90 shadow`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          <Link to="/" className="text-white text-xl font-semibold">SOURCES & RECRUITMENT</Link>
+          <Link to="/" className="text-white flex items-center justify-cenetr text-xl font-semibold">
+          <img src={logo} className="w-20 h-20" alt="" />
+          <h1 className="hidden xl:block">
+          SOURCES & RECRUITMENT
+          </h1>
+         
+          
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
@@ -62,11 +70,11 @@ export default function Navbar() {
 
             {/* MORE dropdown */}
             <div className="relative" ref={moreDropdownRef}>
-              <button onClick={() => setMoreDropdownOpen(!moreDropdownOpen)} className="text-white hover:text-orange-400">
+              <button onClick={() => setMoreDropdownOpen(!moreDropdownOpen)} className="cursor-pointer text-white hover:text-orange-400">
                 More
               </button>
               {moreDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-black rounded-md shadow-lg z-30">
+                <div className="absolute  right-0 mt-2 w-48 bg-black rounded-md shadow-lg z-30">
                   <Link to="/contact" onClick={handleOptionClick} className="block px-4 py-2 text-white hover:bg-gray-800">Contact Us</Link>
                   <Link to="/hot-jobs" onClick={handleOptionClick} className="block px-4 py-2 text-white hover:bg-gray-800">Hot Jobs</Link>
                   <Link to="/hiring" onClick={handleOptionClick} className="block px-4 py-2 text-white hover:bg-gray-800">Hiring</Link>
@@ -75,7 +83,7 @@ export default function Navbar() {
             </div>
 
             {/* Profile */}
-            <div className="relative" ref={profileDropdownRef}>
+            <div className="relative cursor-pointer" ref={profileDropdownRef}>
               <button onClick={() => setProfileDropdownOpen(!profileDropdownOpen)} className="text-white">
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.804 4.121 2.073M15 10a3 3 0 11-6 0 3 3 0 016 0z" />

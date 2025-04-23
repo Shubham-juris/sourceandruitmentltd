@@ -1,5 +1,5 @@
 import React from 'react';
-import Professional from '../../assets/images/Professional.png'; 
+import Professional from '../../assets/images/Professional.webp'; 
 export default function CareerHeroSection() {
   return (
     <div className="w-full bg-white pt-5 px-4 sm:px-6 lg:px-8">

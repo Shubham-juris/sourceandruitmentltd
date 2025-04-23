@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Hireheaderimg from '../../assets/images/JobsOpportunities.jpg';``
+import Hireheaderimg from '../../assets/images/JobsOpportunities.webp';``
 export default function Hireheader() {
   return (
     <div className="w-full flex flex-col md:flex-row  justify-center mx-auto  max-w-7xl mt-30">

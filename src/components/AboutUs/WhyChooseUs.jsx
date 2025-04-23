@@ -1,5 +1,5 @@
 import React from 'react';
-import chooseusimg from '../../assets/images/featured.jpg';
+import chooseusimg from '../../assets/images/featured.webp';
 export default function WhyChooseUs() {
   return (
     <div className="w-full bg-orange-500 text-white">

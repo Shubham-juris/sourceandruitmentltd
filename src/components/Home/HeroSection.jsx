@@ -1,9 +1,9 @@
 import React from 'react';
-import Heroimage from '../../assets/images/heroimg.jpg';
+import Heroimage from '../../assets/images/heroimg.webp';
 
 export default function HeroSection() {
   return (
-    <div className="relative h-[700px]">
+    <div className="relative flex items-center justify-center h-[700px]">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{

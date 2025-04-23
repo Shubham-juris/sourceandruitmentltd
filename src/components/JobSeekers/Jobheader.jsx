@@ -1,5 +1,5 @@
 import React from 'react';
-import JobsOpportunities from '../../assets/jobsekers/img.jpg';
+import JobsOpportunities from '../../assets/jobsekers/img.webp';
 export default function Jobheader() {
   return (
     <div className="w-full flex flex-col  justify-center mx-auto  max-w-7xl md:flex-row mt-40">

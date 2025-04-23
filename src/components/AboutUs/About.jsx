@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutimg from '../../assets/images/aboutcompany.jpg';``
+import aboutimg from '../../assets/images/aboutcompany.webp';``
 export default function About() {
   return (
     <div className="w-full flex flex-col justify-center mx-auto  max-w-7xl md:flex-row mt-30">
