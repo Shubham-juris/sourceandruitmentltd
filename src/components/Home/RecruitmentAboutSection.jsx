@@ -1,5 +1,5 @@
 import React from 'react';
-import office from '../../assets/images/office.png';
+import office from '../../assets/images/office.webp';
 export default function RecruitmentAboutSection() {
   return (
     <div className="bg-white py-0">

@@ -1,7 +1,7 @@
 import React from 'react';
-import Commencing from '../../assets/images/Commencing.jpg';
-import Facilitating from '../../assets/images/Facilitating.jpg';
-import Guiding from '../../assets/images/Guiding.jpg';
+import Commencing from '../../assets/images/Commencing.webp';
+import Facilitating from '../../assets/images/Facilitating.webp';
+import Guiding from '../../assets/images/Guiding.webp';
 
 export default function AboutSource() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import candidate from '../../assets/images/candidate.jpg';
+import candidate from '../../assets/images/candidate.webp';
 export default function EmployerRecruitmentSection() {
   return (
     <div className="w-full bg-white py-16 px-0 sm:px-8 lg:px-12">

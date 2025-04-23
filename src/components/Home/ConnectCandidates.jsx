@@ -1,5 +1,5 @@
 import React from 'react';
-import office from '../../assets/images/manoffice.png';
+import office from '../../assets/images/manoffice.webp';
 export default function ConnectCandidates() {
   return (
     <div className="bg-white pt-12">

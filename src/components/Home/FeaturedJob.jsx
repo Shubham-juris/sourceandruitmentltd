@@ -1,5 +1,5 @@
 import React from 'react';
-import Featured from '../../assets/images/featured.jpg'; // Adjust the path as necessary
+import Featured from '../../assets/images/featured.webp'; // Adjust the path as necessary
 export default function FeaturedJob() {
   return (
     <div className="bg-gray-100 py-16">
