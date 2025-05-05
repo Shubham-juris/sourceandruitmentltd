@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-black text-white py-8 px-4">
       <div className="container mx-auto text-center">
         <p className="text-gray-400 mb-6">
-          Copyright © 2024 Source and Recruitment - All Rights Reserved.
+          Copyright © 2024 Source and Recruitment - All Rights Reserved.<br></br>
           Address-Calgary,Alberta
         </p>
         
