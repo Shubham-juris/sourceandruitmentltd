@@ -6,6 +6,7 @@ export default function Footer() {
       <div className="container mx-auto text-center">
         <p className="text-gray-400 mb-6">
           Copyright © 2024 Source and Recruitment - All Rights Reserved.
+          Address-Calgary,Alberta
         </p>
         
         <nav className="flex justify-center space-x-6">
